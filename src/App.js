@@ -18,6 +18,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <div className='bg-black'>
+        <p className='text-amber-400'>Testing Tailwind</p>
+      </div>
     </div>
   );
 }
