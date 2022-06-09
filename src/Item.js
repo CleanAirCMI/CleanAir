@@ -7,9 +7,9 @@ function Item(props) {
               <div className='w-full'>
                 <img className='object-cover rounded-l-lg' src={props.img}></img>
               </div>
-              <div className='flex flex-col justify-between py-8 pr-8'>
+              <div className='flex flex-col justify-between py-4 pr-4'>
                 <div>
-                  <h3 className='text-4xl font-bold text-emerald-900 leading-normal mt-0 mb-2'>Lokaal {props.classroom}</h3>
+                  <h3 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Lokaal {props.classroom}</h3>
                   <span className='block text-2xl text-green-500'>{props.seats} plekken beschikbaar</span>
                   <span className='block text-2xl'>Klimaatscijfer: <span className='text-green-500'>{props.score}</span></span>
                 </div>
