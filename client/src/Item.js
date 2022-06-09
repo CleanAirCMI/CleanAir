@@ -5,7 +5,7 @@ function Item(props) {
         <div className='bg-stone-100 rounded-lg drop-shadow-lg'>
             <div className='grid grid-cols-2 gap-4'>
               <div className='w-full'>
-                <img className='object-cover rounded-l-lg' src={props.img}></img>
+                <img alt="Classroom" className='object-cover rounded-l-lg' src={props.img}></img>
               </div>
               <div className='flex flex-col justify-between py-4 pr-4'>
                 <div>
