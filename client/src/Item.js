@@ -10,8 +10,8 @@ function Item(props) {
               <div className='flex flex-col justify-between py-4 pr-4'>
                 <div>
                   <h3 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Lokaal {props.classroom}</h3>
-                  <span className='block text-2xl text-green-500'>{props.seats} plekken beschikbaar</span>
-                  <span className='block text-2xl'>Klimaatscijfer: <span className='text-green-500'>{props.score}</span></span>
+                  <span className='block text-2xl text-emerald-600'>{props.seats} plekken beschikbaar</span>
+                  <span className='block text-2xl'>Klimaatscijfer: <span className='text-emerald-600'>{props.score}</span></span>
                 </div>
                 <div className=''>
                   <div>
