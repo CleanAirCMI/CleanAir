@@ -2,12 +2,12 @@
 function Item(props) {
   return (
     <div className="Item">
-        <div className='bg-stone-100 p-8 rounded-lg drop-shadow-md'>
+        <div className='bg-stone-100 rounded-lg drop-shadow-lg'>
             <div className='grid grid-cols-2 gap-4'>
               <div className='w-full'>
-                <img className='object-cover rounded-lg' src={props.img}></img>
+                <img className='object-cover rounded-l-lg' src={props.img}></img>
               </div>
-              <div className='flex flex-col justify-between'>
+              <div className='flex flex-col justify-between py-8 pr-8'>
                 <div>
                   <h3 className='text-4xl font-bold text-emerald-900 leading-normal mt-0 mb-2'>Lokaal {props.classroom}</h3>
                   <span className='block text-2xl text-green-500'>{props.seats} plekken beschikbaar</span>
