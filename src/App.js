@@ -8,12 +8,9 @@ import Item from './Item';
 function App() {
   return (
     <div className="App">
-      <header className="App-header bg-yellow-100 flex items-center justify-center drop-shadow-md">
-        <h1 className='text-emerald-900'>Reserveer app</h1>
+      <header className="App-header bg-white flex items-center justify-center drop-shadow-md">
+        <h1 className='text-5xl font-normal leading-normal mt-0 mb-2 text-center drop-shadow-md'>Reserveer App</h1>
       </header>
-      <section>
-        <h2 className='text-5xl font-normal leading-normal mt-0 mb-2 text-center'>Beschikbare lokalen</h2>
-      </section>
       <section className='h-full w-full bg-stone-300 m-auto py-8'>
         {/* Grid */}
         <div className='mx-16 grid gap-8'>
