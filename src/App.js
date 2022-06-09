@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header bg-white flex items-center justify-center drop-shadow-md">
-        <h1 className='text-5xl font-normal leading-normal mt-0 mb-2 text-center drop-shadow-md'>Reserveer App</h1>
+        <h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Reserveer App</h1>
       </header>
       <section className='h-full w-full bg-stone-300 m-auto py-8'>
         {/* Grid */}

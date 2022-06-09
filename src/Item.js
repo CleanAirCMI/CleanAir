@@ -9,22 +9,22 @@ function Item(props) {
               </div>
               <div className='flex flex-col justify-between'>
                 <div>
-                  <h3 className='text-4xl font-normal leading-normal mt-0 mb-2'>Lokaal {props.classroom}</h3>
+                  <h3 className='text-4xl font-bold text-emerald-900 leading-normal mt-0 mb-2'>Lokaal {props.classroom}</h3>
                   <span className='block text-2xl text-green-500'>{props.seats} plekken beschikbaar</span>
                   <span className='block text-2xl'>Klimaatscijfer: <span className='text-green-500'>{props.score}</span></span>
                 </div>
                 <div className=''>
                   <div>
-                    <span className='font-bold'>Temp: </span><span>{props.temp} °C</span>
+                    <span className='font-bold text-emerald-900'>Temp: </span><span>{props.temp} °C</span>
                   </div>
                   <div>
-                    <span className='font-bold'>CO2: </span><span>{props.co2} PPM</span>
+                    <span className='font-bold text-emerald-900'>CO2: </span><span>{props.co2} PPM</span>
                   </div>
                   <div>
-                    <span className='font-bold'>Luchtvochtigheid: </span><span>{props.humidity} %</span>
+                    <span className='font-bold text-emerald-900'>Luchtvochtigheid: </span><span>{props.humidity} %</span>
                   </div>
                   <div>
-                    <span className='font-bold'>Fijnstof: </span><span>{props.particles} µg/m3</span>
+                    <span className='font-bold text-emerald-900'>Fijnstof: </span><span>{props.particles} µg/m3</span>
                   </div>
                 </div>
                 <div className='grid grid-cols-2 gap-4'>
