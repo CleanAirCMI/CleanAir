@@ -3,7 +3,7 @@ function Item(props) {
   return (
     <div className="Item">
         <div className='bg-stone-100 rounded-lg drop-shadow-lg'>
-            <div className='grid md:grid-cols-2 md:gap-4'>
+            <div className='grid md:grid-cols-2'>
               <div className='w-full'>
                 <img alt="Classroom" className='object-cover rounded-t-lg md:rounded-none md:rounded-l-lg h-full' src={props.img}></img>
               </div>
