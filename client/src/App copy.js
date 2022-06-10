@@ -1,5 +1,4 @@
-import React from "react";
-import "./App.css";
+import './App.css';
 import classroom1 from './img/classroom1.jpeg';
 import classroom2 from './img/classroom2.jpeg';
 import classroom3 from './img/classroom3.jpeg';
@@ -7,18 +6,10 @@ import classroom4 from './img/classroom4.jpeg';
 import Item from './Item';
 
 function App() {
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
   return (
     <div className="App">
       <header className="App-header bg-white flex items-center justify-center drop-shadow-md">
-        <h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>{!data ? "Loading..." : data}</h1>
+        <h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Reserveer App</h1>
       </header>
       <section className='h-full w-full bg-stone-300 m-auto py-8'>
         {/* Grid */}
