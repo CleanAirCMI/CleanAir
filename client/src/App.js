@@ -22,7 +22,7 @@ function App() {
       </header>
       <section className='h-full w-full bg-stone-300 m-auto py-8'>
         {/* Grid */}
-        <div className='mx-32 grid gap-8'>
+        <div className='mx-4 md:mx-16 xl:mx-32 grid gap-8'>
           {/* Item 1 */}
           <Item classroom='2.11' img={classroom1} seats='20' score='8,6' temp='21' co2='468' humidity='55' particles='25'></Item>
           {/* Item 2 */}
