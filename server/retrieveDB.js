@@ -20,7 +20,7 @@ res.send(result)
 app.get("/api/getFromId/:id", (req,res)=>{
 
 const id = req.params.id;
- db.query("SELECT * FROM reserveringen WHERE id = ?", id, 
+ db.query("SELECT * FROM reserveringen WHERE reservering_id = ?", id, 
  (err,result)=>{
     if(err) {
     console.log(err)
@@ -31,11 +31,10 @@ const id = req.params.id;
 // Route for creating the reservation
 app.post('/api/create', (req,res)=> {
 
-const username = req.body.userName;
-const title = req.body.title;
-const text = req.body.text;
+const datum = req.body.datum;
+const tijd = req.body.tijd;
 
-db.query("INSERT INTO reserveringen (title, post_text, user_name) VALUES (?,?,?)",[title,text,username], (err,result)=>{
+db.query("INSERT INTO reserveringen (datum, tijd,) VALUES (?,?,)",[datum,tijd], (err,result)=>{
    if(err) {
    console.log(err)
    } 
@@ -47,7 +46,7 @@ db.query("INSERT INTO reserveringen (title, post_text, user_name) VALUES (?,?,?)
 app.delete('/api/delete/:id',(req,res)=>{
 const id = req.params.id;
 
-db.query("DELETE FROM reserveringen WHERE id= ?", id, (err,result)=>{
+db.query("DELETE FROM reserveringen WHERE reservering_id= ?", id, (err,result)=>{
 if(err) {
 console.log(err)
         } }) })
