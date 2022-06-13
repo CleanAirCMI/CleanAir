@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link } from "react-router-dom";
+import Detail from './routes/Detail';
 
 function Item(props) {
   return (
@@ -11,7 +14,7 @@ function Item(props) {
                 <div>
                   <h3 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Lokaal {props.classroom}</h3>
                   <span className='block text-2xl text-emerald-600'>{props.seats} plekken beschikbaar</span>
-                  <span className='block text-2xl'>Klimaatscijfer: <span className='text-emerald-600'>{props.score}</span></span>
+                  <span className='block text-2xl'>Klimaatcijfer: <span className='text-emerald-600'>{props.score}</span></span>
                 </div>
                 <div className='mb-4 md:mb-0'>
                   <div>
@@ -29,7 +32,7 @@ function Item(props) {
                 </div>
                 <div className='grid grid-cols-2 gap-4'>
                   <div>
-                    <a className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-gray-800' href='#'>Meer info</a>
+                    <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-gray-800' to="/detail">Meer info</Link>
                   </div>
                   <div>
                     <a className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' href='#'>Reserveren</a>
