@@ -1,15 +1,20 @@
 import classroom1 from '../img/classroom1.jpeg';
+import { Link } from "react-router-dom";
+import { FaAngleLeft } from "react-icons/fa";
 
 function Detail() {
   return (
     <div className="Detail">
-      <header className="App-header bg-white flex items-center justify-center drop-shadow-md">
+      <header className="Detail-header bg-white flex items-center justify-center drop-shadow-md">
         <h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Reserveer App</h1>
       </header>
-      <section className='w-full h-full p-16 bg-stone-300'>
-        <div className='rounded-xl mx-32'>
+      <section className='w-full h-full py-8 bg-stone-300'>
+        <div className='rounded-xl mx-32 drop-shadow-lg'>
           <div className='rounded-xl h-96 w-full bg-center' style={{ backgroundImage:`url(${classroom1})` }}></div>
           <div className='rounded-xl bg-white -mt-4 p-8'>
+            <div className='flex flex-row items-center text-lg text-emerald-900'>
+              <FaAngleLeft></FaAngleLeft><Link to="/">Terug</Link>
+            </div>
             <h1 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Lokaal 2.11</h1>
             <div className='grid md:grid-cols-2'>
               <div>
@@ -42,7 +47,7 @@ function Detail() {
               sapien id massa. Aenean ut nisi pellentesque turpis ultricies elementum eget et nunc.</p>
             </div>
             <div>
-              <a className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' href='#'>Reserveren</a>
+              <a className='block w-1/3 rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' href='#'>Reserveren</a>
             </div>
           </div>
         </div>
