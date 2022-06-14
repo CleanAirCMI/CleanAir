@@ -1,3 +1,4 @@
+import React from "react";
 import classroom1 from '../img/classroom1.jpeg';
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -35,6 +36,10 @@ function Reserve() {
       console.log(err);
     }
   };
+
+  React.useEffect(() => {
+    document.title = `Reserveren | CleanAir`;
+  }, []);
   
   return (
     <div className="Reserve">
@@ -48,7 +53,7 @@ function Reserve() {
             <div>
               <img alt="Classroom" className='object-cover rounded-l-xl w-32' src={classroom1}></img>
             </div>
-            <div className='ml-8'>
+            <div className='ml-4'>
               <h3 className='text-2xl'>Lokaal 2.11</h3>
               <span>Wijnhaven, 2e verdieping</span>
             </div>
@@ -57,15 +62,15 @@ function Reserve() {
             <h3 className='text-2xl text-emerald-900 font-medium'>Gegevens</h3>
             <form onSubmit={handleSubmit} className='my-2 text-emerald-900'>
               <label htmlFor="fname">Voornaam</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
               <label htmlFor="lname">Achternaam</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
               <label htmlFor="fname">Studentennummer</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="text" value={studentNumber} onChange={(e) => setStudentNumber(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" value={studentNumber} onChange={(e) => setStudentNumber(e.target.value)}></input>
               <label htmlFor="lname">Aantal plekken</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="number" min="1" max="8" value={seats} onChange={(e) => setSeats(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="number" min="1" max="8" value={seats} onChange={(e) => setSeats(e.target.value)}></input>
               <label htmlFor="lname">Datum</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="datetime-local" value={date} onChange={(e) => setDate(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="datetime-local" value={date} onChange={(e) => setDate(e.target.value)}></input>
               <input className='my-2 w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800 cursor-pointer' type="submit" value="Reserveren"></input>
               <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>

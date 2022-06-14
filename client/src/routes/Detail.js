@@ -1,3 +1,4 @@
+import React from "react";
 import classroom1 from '../img/classroom1.jpeg';
 import { Link, useParams } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa";
@@ -5,6 +6,10 @@ import { FaAngleLeft } from "react-icons/fa";
 function Detail() {
   const params = useParams();
   console.log(params);
+
+  React.useEffect(() => {
+    document.title = `Lokaal 2.11 | CleanAir`;
+  }, []);
   
   return (
     <div className="Detail">
