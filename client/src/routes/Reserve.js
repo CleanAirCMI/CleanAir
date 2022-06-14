@@ -1,9 +1,40 @@
 import classroom1 from '../img/classroom1.jpeg';
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function Reserve() {
-  const params = useParams();
-  console.log(params);
+  const roomId = useParams().roomId;
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [studentNumber, setStudentNumber] = useState("");
+  const [seats, setSeats] = useState("");
+  const [date, setDate] = useState("");
+  const [message, setMessage] = useState("");
+
+  let handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch("https://example.org/post", {
+        method: "POST",
+        body: JSON.stringify({
+          fname: firstName,
+          lname: lastName,
+          studentNumber: studentNumber,
+          seats: seats,
+          date: date
+        }),
+      });
+      let resJson = await res.json();
+      if (res.status === 200) {
+
+        setMessage("Reservering geplaatst");
+      } else {
+        setMessage("Iets ging fout. Probeer het opnieuw");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   
   return (
     <div className="Reserve">
@@ -24,18 +55,19 @@ function Reserve() {
           </div>
           <div className=''>
             <h3 className='text-2xl text-emerald-900 font-medium'>Gegevens</h3>
-            <form className='my-2 text-emerald-900'>
-              <label for="fname">Voornaam</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="text" id="fname" name="fname"></input>
-              <label for="lname">Achternaam</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="text" id="lname" name="lname"></input>
-              <label for="fname">Studentennummer</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="text" id="studentnumber" name="studentnumber"></input>
-              <label for="lname">Aantal plekken</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="number" min="1" max="8" id="seats" name="seats"></input>
-              <label for="lname">Datum</label>
-              <input className='w-full border rounded-md p-2 mb-2' type="datetime-local" id="date" name="date"></input>
+            <form onSubmit={handleSubmit} className='my-2 text-emerald-900'>
+              <label htmlFor="fname">Voornaam</label>
+              <input className='w-full border rounded-md p-2 mb-2' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
+              <label htmlFor="lname">Achternaam</label>
+              <input className='w-full border rounded-md p-2 mb-2' type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
+              <label htmlFor="fname">Studentennummer</label>
+              <input className='w-full border rounded-md p-2 mb-2' type="text" value={studentNumber} onChange={(e) => setStudentNumber(e.target.value)}></input>
+              <label htmlFor="lname">Aantal plekken</label>
+              <input className='w-full border rounded-md p-2 mb-2' type="number" min="1" max="8" value={seats} onChange={(e) => setSeats(e.target.value)}></input>
+              <label htmlFor="lname">Datum</label>
+              <input className='w-full border rounded-md p-2 mb-2' type="datetime-local" value={date} onChange={(e) => setDate(e.target.value)}></input>
               <input className='my-2 w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800 cursor-pointer' type="submit" value="Reserveren"></input>
+              <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>
           </div>
         </div>
