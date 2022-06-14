@@ -12,7 +12,7 @@ function Detail() {
         <h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Reserveer App</h1>
       </header>
       <section className='w-full h-full py-8 bg-stone-300'>
-        <div className='rounded-xl mx-32 drop-shadow-lg'>
+        <div className='rounded-xl mx-4 md:mx-16 xl:mx-32 drop-shadow-lg'>
           <div className='rounded-xl h-96 w-full bg-center' style={{ backgroundImage:`url(${classroom1})` }}></div>
           <div className='rounded-xl bg-white -mt-4 p-8'>
             <div className='flex flex-row items-center text-lg text-emerald-900'>
