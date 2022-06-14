@@ -1,8 +1,11 @@
 import classroom1 from '../img/classroom1.jpeg';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa";
 
 function Detail() {
+  const params = useParams();
+  console.log(params);
+  
   return (
     <div className="Detail">
       <header className="Detail-header bg-white flex items-center justify-center drop-shadow-md">
