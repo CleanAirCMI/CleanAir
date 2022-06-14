@@ -31,10 +31,10 @@ function Item(props) {
                 </div>
                 <div className='grid grid-cols-2 gap-4'>
                   <div>
-                    <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-gray-800' to="/detail/123">Meer info</Link>
+                    <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-gray-800' to="/rooms/123">Meer info</Link>
                   </div>
                   <div>
-                    <a className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' href='#'>Reserveren</a>
+                    <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to="/reserve/123">Reserveren</Link>
                   </div>
                 </div>
               </div>

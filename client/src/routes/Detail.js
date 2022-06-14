@@ -18,7 +18,7 @@ function Detail() {
             <div className='flex flex-row items-center text-lg text-emerald-900'>
               <FaAngleLeft></FaAngleLeft><Link to="/">Terug</Link>
             </div>
-            <h1 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Lokaal 2.11</h1>
+            <h2 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Lokaal 2.11</h2>
             <div className='grid md:grid-cols-2'>
               <div>
                 <span className='block text-2xl text-emerald-600'> 20 plekken beschikbaar</span>
@@ -50,7 +50,7 @@ function Detail() {
               sapien id massa. Aenean ut nisi pellentesque turpis ultricies elementum eget et nunc.</p>
             </div>
             <div>
-              <a className='block w-1/3 rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' href='#'>Reserveren</a>
+              <Link className='block w-1/3 rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to="/reserve/123">Reserveren</Link>
             </div>
           </div>
         </div>
