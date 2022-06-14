@@ -1,23 +1,25 @@
-const express = require('express');
-const db = require('./config/db')
-const cors = require('cors')
+import express from 'express';
+import db from './config/db.js';
+import cors from 'cors';
 
 const app = express();
-const  PORT = 3002;
+const  PORT = 3001;
 app.use(cors());
 app.use(express.json())
 
 // Route to get all reservation
 app.get("/api/get", (req,res)=>{
+    console.log('test');
 db.query("SELECT * FROM reserveringen", (err,result)=>{
     if(err) {
     console.log(err)
     } 
 res.send(result)
+console.log('test2');
 });   });
 
 // Route to get one reservation
-app.get("/api/getFromId/:id", (req,res)=>{
+app.get("/api/getFromId/:reservering_id", (req,res)=>{
 
 const id = req.params.id;
  db.query("SELECT * FROM reserveringen WHERE reservering_id = ?", id, 
@@ -43,7 +45,7 @@ db.query("INSERT INTO reserveringen (datum, tijd,) VALUES (?,?,)",[datum,tijd], 
 
 // Route to delete a reservation
 
-app.delete('/api/delete/:id',(req,res)=>{
+app.delete('/api/delete/:reservering_id',(req,res)=>{
 const id = req.params.id;
 
 db.query("DELETE FROM reserveringen WHERE reservering_id= ?", id, (err,result)=>{
