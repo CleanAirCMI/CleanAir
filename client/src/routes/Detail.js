@@ -9,7 +9,7 @@ function Detail() {
   return (
     <div className="Detail">
       <header className="Detail-header bg-white flex items-center justify-center drop-shadow-md">
-        <h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Reserveer App</h1>
+        <Link to="/"><h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Reserveer App</h1></Link>
       </header>
       <section className='w-full h-full py-8 bg-stone-300'>
         <div className='rounded-xl mx-4 md:mx-16 xl:mx-32 drop-shadow-lg'>
