@@ -56,3 +56,6 @@ console.log(err)
 app.listen(PORT, ()=>{
     console.log(`Server is running on ${PORT}`)
 })
+
+// export db to other files
+export default reservations;

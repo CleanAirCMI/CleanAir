@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import path from 'path';
 import express from 'express';
 import secrets from './secrets.json' assert {type: 'json'};
+import reservations from 'reservations.js';
 
 
 const PORT = process.env.PORT || 3001;
