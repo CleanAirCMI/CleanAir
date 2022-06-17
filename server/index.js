@@ -2,15 +2,15 @@
 import fetch from 'node-fetch';
 import path from 'path';
 import express from 'express';
-import secrets from './secrets.json' assert {type: 'json'};
+import secrets from './config/secrets.json' assert {type: 'json'};
 
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-const response = await fetch('https://nodejs.org/api/documentation.json', {
-// const response = await fetch('https://dashboard.cphsense.com/api/v2/groups/136/latest', {
+// const response = await fetch('https://nodejs.org/api/documentation.json', {
+const response = await fetch('https://dashboard.cphsense.com/api/v2/groups/136/latest', {
         method: 'get',
         headers: {
         'Accept' : 'application/json',
