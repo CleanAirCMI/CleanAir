@@ -17,9 +17,9 @@ const response = await fetch('https://dashboard.cphsense.com/api/v2/groups/136/l
         'Authorization' : `Bearer ` + secrets.API
         }
     });
-const data = await response.json();
+const result = await response.json();
 
-console.log(data);
+console.log(result.data[1]);
 
 //todo hardcoded dummy data met apart id
 
