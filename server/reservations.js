@@ -2,6 +2,10 @@ import express from 'express';
 import db from './config/db.js';
 import cors from 'cors';
 
+let reservations = {
+    
+}
+
 const app = express();
 const  PORT = 3001;
 app.use(cors());
@@ -56,6 +60,7 @@ console.log(err)
 app.listen(PORT, ()=>{
     console.log(`Server is running on ${PORT}`)
 })
+
 
 // export db to other files
 export default reservations;
