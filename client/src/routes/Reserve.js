@@ -18,11 +18,12 @@ function Reserve() {
       let res = await fetch("https://example.org/post", {
         method: "POST",
         body: JSON.stringify({
-          fname: firstName,
-          lname: lastName,
+          firstname: firstName,
+          lastname: lastName,
           studentNumber: studentNumber,
           seats: seats,
-          date: date
+          date: date,
+          roomId: roomId
         }),
       });
       let resJson = await res.json();

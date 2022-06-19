@@ -1,46 +1,101 @@
 import React from 'react';
+import 'tw-elements';
 import { Link } from "react-router-dom";
+import { FaAngleDown } from "react-icons/fa";
 
 function Item(props) {
+
   return (
-    <div className="Item">
-        <div className='bg-stone-100 rounded-lg drop-shadow-lg'>
-            <div className='grid md:grid-cols-2'>
-              <div className='w-full'>
-                <img alt="Classroom" className='object-cover rounded-t-lg md:rounded-none md:rounded-l-lg h-full' src={props.img}></img>
-              </div>
-              <div className='flex flex-col justify-between p-4 md:py-4 md:pr-4'>
+  <div className='Item bg-white drop-shadow-lg rounded-xl overflow-hidden'>
+    <div className='w-full p-4 grid md:grid-cols-2'>
+      <div className='text-4xl font-medium text-emerald-900'>
+        <h3>Lokaal {props.classroom}</h3>
+      </div>
+      <div className='text-4xl font-medium text-emerald-900'>
+        <span className='block md:text-center'>{props.location}</span>
+      </div>
+    </div>
+    <div className="accordion-item">
+      <h4 className="accordion-header cursor-pointer mb-0" id={"heading"+props.index}>
+        <button className="flex items-center transition cursor-pointer" type="button" data-bs-toggle="collapse" data-bs-target={"collapse"+props.index} aria-expanded="false" aria-controls={"collapse"+props.index}>
+          <div className='grid md:grid-cols-2'>
+            <div className='w-full'>
+              <img alt="Classroom" className='object-cover h-full' src={props.img}></img>
+            </div>
+            <div className='p-4 md:py-4 md:pr-4'>
+              <div className='h-full flex flex-col justify-between'>
                 <div>
-                  <h3 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Lokaal {props.classroom}</h3>
+                  <h3 className='text-7xl font-medium text-emerald-600 leading-normal mt-0'>{props.score}</h3>
                   <span className='block text-2xl text-emerald-600'>{props.seats} plekken beschikbaar</span>
-                  <span className='block text-2xl'>Klimaatcijfer: <span className='text-emerald-600'>{props.score}</span></span>
                 </div>
-                <div className='mb-4 md:mb-0'>
-                  <div>
-                    <span className='font-bold text-emerald-900'>Temp: </span><span>{props.temp} °C</span>
-                  </div>
-                  <div>
-                    <span className='font-bold text-emerald-900'>CO2: </span><span>{props.co2} PPM</span>
-                  </div>
-                  <div>
-                    <span className='font-bold text-emerald-900'>Luchtvochtigheid: </span><span>{props.humidity} %</span>
-                  </div>
-                  <div>
-                    <span className='font-bold text-emerald-900'>Fijnstof: </span><span>{props.particles} µg/m3</span>
-                  </div>
-                </div>
-                <div className='grid grid-cols-2 gap-4'>
-                  <div>
-                    <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-gray-800' to="/rooms/123">Meer info</Link>
-                  </div>
-                  <div>
-                    <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to="/reserve/123">Reserveren</Link>
-                  </div>
+                <div className='w-full flex justify-center'>
+                  <FaAngleDown className='h-16 text-emerald-900'></FaAngleDown>
                 </div>
               </div>
             </div>
           </div>
+        </button>
+      </h4>
+      <div id={"collapse"+props.index} className="accordion-collapse collapse show w-full" aria-labelledby={"heading"+props.index}
+        data-bs-parent="#accordionList">
+        <div className="accordion-body text-xl py-8 px-5">
+          <p className='italic w-2/3 mx-auto text-slate-600'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam purus sapien, sagittis at lectus quis, 
+          bibendum venenatis lorem. Vestibulum arcu libero, placerat ac sapien sed, tempor posuere mi. Donec 
+          accumsan magna dapibus lorem placerat, auctor auctor augue luctus.</p>
+          <div className='grid md:grid-cols-5 p-8 gap-8 text-emerald-900'>
+            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
+              <div className='py-4'>
+                <span className='block text-6xl'>Co2</span>
+                <span className='block text-2xl'>{props.co2} PPM</span>
+              </div>          
+              <div className="w-full bg-gray-200 h-4 border-t ">
+                <div className="bg-emerald-600 h-4" style={{ "width": "45%" }}></div>
+              </div>   
+            </div>
+            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
+              <div className='py-4'>
+                <span className='block text-6xl'>Temp</span>
+                <span className='block text-2xl'>{props.temp} °C</span>
+              </div>          
+              <div className="w-full bg-gray-200 h-4 border-t ">
+                <div className="bg-emerald-600 h-4" style={{ "width": "60%" }}></div>
+              </div>   
+            </div>
+            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
+              <div className='py-4'>
+                <span className='block text-6xl'>Vocht</span>
+                <span className='block text-2xl'>{props.humidity} %</span>
+              </div>          
+              <div className="w-full bg-gray-200 h-4 border-t ">
+                <div className="bg-emerald-600 h-4" style={{ "width": "55%" }}></div>
+              </div>   
+            </div>
+            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
+              <div className='py-4'>
+                <span className='block text-6xl'>Stof</span>
+                <span className='block text-2xl'>{props.particles} µg/m3</span>
+              </div>          
+              <div className="w-full bg-gray-200 h-4 border-t ">
+                <div className="bg-emerald-600 h-4" style={{ "width": "20%" }}></div>
+              </div>   
+            </div>
+            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
+              <div className='py-4'>
+                <span className='block text-6xl'>CO</span>
+                <span className='block text-2xl'>10 PPM</span>
+              </div>          
+              <div className="w-full bg-gray-200 h-4 border-t ">
+                <div className="bg-emerald-600 h-4" style={{ "width": "5%" }}></div>
+              </div>   
+            </div>      
+          </div>
+          <div className='w-1/2 mx-auto'>
+            <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to="/reserve/123">Reserveren</Link>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
   );
 }
 
