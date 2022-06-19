@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa";
 
 function Item(props) {
-
   return (
   <div className='Item bg-white drop-shadow-lg rounded-xl overflow-hidden'>
     <div className='w-full p-4 grid md:grid-cols-2'>
@@ -16,8 +15,8 @@ function Item(props) {
       </div>
     </div>
     <div className="accordion-item">
-      <h4 className="accordion-header cursor-pointer mb-0" id={"heading"+props.index}>
-        <button className="flex items-center transition cursor-pointer" type="button" data-bs-toggle="collapse" data-bs-target={"collapse"+props.index} aria-expanded="false" aria-controls={"collapse"+props.index}>
+      <h4 className="accordion-header cursor-pointer mb-0" id={'heading'+props.index}>
+        <button className="flex items-center transition cursor-pointer" type="button" data-bs-toggle="collapse" data-bs-target={'#collapse'+props.index} aria-expanded="false" aria-controls={'collapse'+props.index}>
           <div className='grid md:grid-cols-2'>
             <div className='w-full'>
               <img alt="Classroom" className='object-cover h-full' src={props.img}></img>
@@ -36,7 +35,7 @@ function Item(props) {
           </div>
         </button>
       </h4>
-      <div id={"collapse"+props.index} className="accordion-collapse collapse show w-full" aria-labelledby={"heading"+props.index}
+      <div id={'collapse'+props.index} className="accordion-collapse collapse w-full" aria-labelledby={'heading'+props.index}
         data-bs-parent="#accordionList">
         <div className="accordion-body text-xl py-8 px-5">
           <p className='italic w-2/3 mx-auto text-slate-600'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam purus sapien, sagittis at lectus quis, 
