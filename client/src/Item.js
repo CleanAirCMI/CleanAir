@@ -23,11 +23,11 @@ function Item(props) {
             </div>
             <div className='p-4 md:py-4 md:pr-4'>
               <div className='h-full flex flex-col justify-between'>
-                <div>
+                <div className='w-full h-full flex flex-col justify-center'>
                   <h3 className='text-7xl font-medium text-emerald-600 leading-normal mt-0'>{props.score}</h3>
                   <span className='block text-2xl text-emerald-600'>{props.seats} plekken beschikbaar</span>
                 </div>
-                <div className='w-full flex justify-center'>
+                <div className='w-full flex justify-center mb-0'>
                   <FaAngleDown className='h-16 text-emerald-900'></FaAngleDown>
                 </div>
               </div>
@@ -44,7 +44,7 @@ function Item(props) {
           <div className='grid md:grid-cols-5 p-8 gap-8 text-emerald-900'>
             <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
               <div className='py-4'>
-                <span className='block text-6xl'>Co2</span>
+                <span className='block text-5xl'>Co2</span>
                 <span className='block text-2xl'>{props.co2} PPM</span>
               </div>          
               <div className="w-full bg-gray-200 h-4 border-t ">
@@ -53,7 +53,7 @@ function Item(props) {
             </div>
             <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
               <div className='py-4'>
-                <span className='block text-6xl'>Temp</span>
+                <span className='block text-5xl'>Temp</span>
                 <span className='block text-2xl'>{props.temp} °C</span>
               </div>          
               <div className="w-full bg-gray-200 h-4 border-t ">
@@ -62,7 +62,7 @@ function Item(props) {
             </div>
             <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
               <div className='py-4'>
-                <span className='block text-6xl'>Vocht</span>
+                <span className='block text-5xl'>Vocht</span>
                 <span className='block text-2xl'>{props.humidity} %</span>
               </div>          
               <div className="w-full bg-gray-200 h-4 border-t ">
@@ -71,7 +71,7 @@ function Item(props) {
             </div>
             <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
               <div className='py-4'>
-                <span className='block text-6xl'>Stof</span>
+                <span className='block text-5xl'>Stof</span>
                 <span className='block text-2xl'>{props.particles} µg/m3</span>
               </div>          
               <div className="w-full bg-gray-200 h-4 border-t ">
@@ -80,7 +80,7 @@ function Item(props) {
             </div>
             <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
               <div className='py-4'>
-                <span className='block text-6xl'>CO</span>
+                <span className='block text-5xl'>CO</span>
                 <span className='block text-2xl'>10 PPM</span>
               </div>          
               <div className="w-full bg-gray-200 h-4 border-t ">
