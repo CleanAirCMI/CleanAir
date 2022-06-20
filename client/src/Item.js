@@ -1,6 +1,7 @@
 import React from 'react';
 import 'tw-elements';
 import { Link } from "react-router-dom";
+import DataItem from './components/DataItem';
 import { FaAngleDown } from "react-icons/fa";
 
 function Item(props) {
@@ -42,51 +43,11 @@ function Item(props) {
           bibendum venenatis lorem. Vestibulum arcu libero, placerat ac sapien sed, tempor posuere mi. Donec 
           accumsan magna dapibus lorem placerat, auctor auctor augue luctus.</p>
           <div className='grid md:grid-cols-5 p-8 gap-8 text-emerald-900'>
-            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
-              <div className='py-4'>
-                <span className='block text-5xl'>Co2</span>
-                <span className='block text-2xl'>{props.co2} PPM</span>
-              </div>          
-              <div className="w-full bg-gray-200 h-4 border-t ">
-                <div className="bg-emerald-600 h-4" style={{ "width": "45%" }}></div>
-              </div>   
-            </div>
-            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
-              <div className='py-4'>
-                <span className='block text-5xl'>Temp</span>
-                <span className='block text-2xl'>{props.temp} °C</span>
-              </div>          
-              <div className="w-full bg-gray-200 h-4 border-t ">
-                <div className="bg-emerald-600 h-4" style={{ "width": "60%" }}></div>
-              </div>   
-            </div>
-            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
-              <div className='py-4'>
-                <span className='block text-5xl'>Vocht</span>
-                <span className='block text-2xl'>{props.humidity} %</span>
-              </div>          
-              <div className="w-full bg-gray-200 h-4 border-t ">
-                <div className="bg-emerald-600 h-4" style={{ "width": "55%" }}></div>
-              </div>   
-            </div>
-            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
-              <div className='py-4'>
-                <span className='block text-5xl'>Stof</span>
-                <span className='block text-2xl'>{props.particles} µg/m3</span>
-              </div>          
-              <div className="w-full bg-gray-200 h-4 border-t ">
-                <div className="bg-emerald-600 h-4" style={{ "width": "20%" }}></div>
-              </div>   
-            </div>
-            <div className='border border-slate-300 text-center rounded-lg overflow-hidden'>
-              <div className='py-4'>
-                <span className='block text-5xl'>CO</span>
-                <span className='block text-2xl'>10 PPM</span>
-              </div>          
-              <div className="w-full bg-gray-200 h-4 border-t ">
-                <div className="bg-emerald-600 h-4" style={{ "width": "5%" }}></div>
-              </div>   
-            </div>      
+            <DataItem type="Co2" value={props.co2+" PPM"} percentage="45"></DataItem>
+            <DataItem type="Temp" value={props.temp+" °C"} percentage="60"></DataItem>
+            <DataItem type="Vocht" value={props.humidity+" &"} percentage="55"></DataItem>
+            <DataItem type="Stof" value={props.particles+" µg/m3"} percentage="20"></DataItem>
+            <DataItem type="CO" value="10 PPM" percentage="5"></DataItem>     
           </div>
           <div className='w-1/2 mx-auto'>
             <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to="/reserve/123">Reserveren</Link>
