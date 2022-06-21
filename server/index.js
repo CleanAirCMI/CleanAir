@@ -2,7 +2,7 @@
 import fetch from 'node-fetch';
 import path from 'path';
 import express from 'express';
-import secrets from './secrets.json' assert {type: 'json'};
+//import secrets from './secrets.json' assert {type: 'json'};
 import db from './config/db.js';
 import cors from 'cors';
 
@@ -16,7 +16,7 @@ const response = await fetch('https://nodejs.org/api/documentation.json', {
         method: 'get',
         headers: {
         'Accept' : 'application/json',
-        'Authorization' : `Bearer ` + secrets.API
+        //'Authorization' : `Bearer ` + secrets.API
         }
     });
 const data = await response.json();
@@ -29,6 +29,7 @@ console.log(data);
 
 //todo schaal 1-10
 
+//kan weg
 app.get("/api", (req, res) => {
     res.json(data);
   });
@@ -42,6 +43,7 @@ app.listen(PORT, () => {
   app.use(cors());
   app.use(express.json())
 
+    //kan weg
     // Route to get all reservation
     app.get("/api/reservations/get", (req,res)=>{
     db.query("SELECT * FROM reservations", (err,result)=>{
@@ -51,6 +53,7 @@ app.listen(PORT, () => {
     res.send(result)
     });   });
 
+    //kan weg
     // Route to get one reservation
     app.get("/api/reservations/getFromId/:reservation_id", (req,res)=>{
 
@@ -64,7 +67,7 @@ app.listen(PORT, () => {
         });   });
 
     // Route for creating the reservation
-    app.post('/api/create', (req,res)=> {
+    app.post('/api/reservation/create', (req,res)=> {
 
     const date = req.body.date;
     const time = req.body.time;
@@ -77,7 +80,7 @@ app.listen(PORT, () => {
     });   })
 
     // Route to delete a reservation
-
+    // kan weg
     app.delete('/api/delete/:reservation_id',(req,res)=>{
     const reservation_id = req.params.reservation_id;
 
@@ -87,6 +90,7 @@ app.listen(PORT, () => {
             } }) })
 
   // Students
+    //kan weg
     // Route to get all students
     app.get("/api/students/get", (req,res)=>{
       console.log('test');
@@ -97,7 +101,7 @@ app.listen(PORT, () => {
     res.send(result)
     console.log('test2');
     });   });
-
+    //kan weg
     // Route to get one student
     app.get("/api/students/getFromId/:student_id", (req,res)=>{
 
@@ -109,9 +113,8 @@ app.listen(PORT, () => {
       } 
       res.send(result)
       });   });
-
-    // Route for creating the reservation
-    app.post('/api/create', (req,res)=> {
+    // Route for creating the student
+    app.post('/api/student/create', (req,res)=> {
 
     const studentnumber = req.body.studentnumber;
     const firstname = req.body.firstname;
@@ -125,20 +128,10 @@ app.listen(PORT, () => {
     console.log(result)
     });   })
 
-    // Route to delete a reservation
-
-    app.delete('/api/students/delete/:student_id',(req,res)=>{
-    const student_id = req.params.student_id;
-
-    db.query("DELETE FROM students WHERE student= ?", student_id, (err,result)=>{
-    if(err) {
-    console.log(err)
-          } }) })
-
   // Rooms
-    // Route to get all students
+    // Route to get all rooms
     app.get("/api/rooms/get", (req,res)=>{
-    db.query("SELECT * FROM rooms", (err,result)=>{
+    db.query("SELECT * FROM rooms INNER JOIN locations ON rooms.location_id = locations.location_id;", (err,result)=>{
       if(err) {
       console.log(err)
       } 
@@ -156,7 +149,8 @@ app.listen(PORT, () => {
       } 
       res.send(result)
       });   });
-
+    
+    //kan weg
     // Route for creating the room
     app.post('/api/rooms/create', (req,res)=> {
 
@@ -171,13 +165,3 @@ app.listen(PORT, () => {
     } 
     console.log(result)
     });   })
-
-    // Route to delete a room
-
-    app.delete('/api/rooms/delete/:room_id',(req,res)=>{
-    const room_id = req.params.room_id;
-
-    db.query("DELETE FROM rooms WHERE room= ?", room_id, (err,result)=>{
-    if(err) {
-    console.log(err)
-          } }) })
