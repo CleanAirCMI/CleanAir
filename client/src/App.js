@@ -23,7 +23,6 @@ function App() {
         <Link to="/"><h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Reserveer App</h1></Link>
       </header>
       <section className='h-full w-full bg-stone-300 m-auto py-8'>
-        {/* Grid */}
         <div className='mx-4 md:mx-16 xl:mx-32 grid gap-8 accordion' id='accordionList'>
           <Item classroom='2.11' index='1' location='Wijnhaven' img={classroom1} seats='20' score='8,6' temp='21' co2='468' humidity='55' particles='25'></Item>
           <Item classroom='2.34' index='2' location='Dijkzigt' img={classroom2} seats='8' score='7,3' temp='19' co2='486' humidity='30' particles='69'></Item>
