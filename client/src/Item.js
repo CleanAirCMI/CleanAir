@@ -39,15 +39,13 @@ function Item(props) {
       <div id={'collapse'+props.index} className="accordion-collapse collapse w-full" aria-labelledby={'heading'+props.index}
         data-bs-parent="#accordionList">
         <div className="accordion-body text-xl py-8 px-5">
-          <p className='italic w-2/3 mx-auto text-slate-600'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam purus sapien, sagittis at lectus quis, 
-          bibendum venenatis lorem. Vestibulum arcu libero, placerat ac sapien sed, tempor posuere mi. Donec 
-          accumsan magna dapibus lorem placerat, auctor auctor augue luctus.</p>
+          <p className='italic w-2/3 mx-auto text-slate-600'>{props.description}</p>
           <div className='grid md:grid-cols-5 p-8 gap-8 text-emerald-900'>
-            <DataItem type="Co2" value={props.co2} percentage="45"></DataItem>
-            <DataItem type="Temp" value={props.temp} percentage="60"></DataItem>
-            <DataItem type="Vocht" value={props.humidity} percentage="55"></DataItem>
-            <DataItem type="Stof" value={props.particles} percentage="20"></DataItem>
-            <DataItem type="Geluid" value={55} percentage="30"></DataItem>     
+            <DataItem type="Co2" value={props.co2}></DataItem>
+            <DataItem type="Temp" value={props.temp}></DataItem>
+            <DataItem type="Vocht" value={props.humidity}></DataItem>
+            <DataItem type="Stof" value={props.particles}></DataItem>
+            <DataItem type="Geluid" value={55}></DataItem>     
           </div>
           <div className='w-1/2 mx-auto'>
             <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to={"/reservations/get/"+props.classroom_id}>Reserveren</Link>
