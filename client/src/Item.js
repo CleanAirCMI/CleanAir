@@ -43,11 +43,11 @@ function Item(props) {
           bibendum venenatis lorem. Vestibulum arcu libero, placerat ac sapien sed, tempor posuere mi. Donec 
           accumsan magna dapibus lorem placerat, auctor auctor augue luctus.</p>
           <div className='grid md:grid-cols-5 p-8 gap-8 text-emerald-900'>
-            <DataItem type="Co2" value={props.co2+" PPM"} percentage="45"></DataItem>
-            <DataItem type="Temp" value={props.temp+" °C"} percentage="60"></DataItem>
-            <DataItem type="Vocht" value={props.humidity+" %"} percentage="55"></DataItem>
-            <DataItem type="Stof" value={props.particles+" µg/m3"} percentage="20"></DataItem>
-            <DataItem type="Geluid" value="55 DB" percentage="30"></DataItem>     
+            <DataItem type="Co2" value={props.co2} percentage="45"></DataItem>
+            <DataItem type="Temp" value={props.temp} percentage="60"></DataItem>
+            <DataItem type="Vocht" value={props.humidity} percentage="55"></DataItem>
+            <DataItem type="Stof" value={props.particles} percentage="20"></DataItem>
+            <DataItem type="Geluid" value={55} percentage="30"></DataItem>     
           </div>
           <div className='w-1/2 mx-auto'>
             <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to={"/reservations/get/"+props.classroom_id}>Reserveren</Link>
