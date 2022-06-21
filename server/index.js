@@ -31,7 +31,7 @@ console.log(result.data);
 
 //kan weg
 app.get("/api", (req, res) => {
-    res.json(data);
+    res.json(result);
   });
 
 app.listen(PORT, () => {
