@@ -12,21 +12,41 @@ app.use(express.json())
 
 var timer = 0;
 
-getClimateData();
+getClassrooms();
 
-function getClimateData() {
+function getClassrooms() {
   timer = setInterval(async function() {
-    var response = await fetch('https://dashboard.cphsense.com/api/v2/groups/136/latest', {
+
+    db.query("SELECT * FROM classrooms INNER JOIN locations ON classrooms.location_id = locations.location_id;", (err,res)=>{
+    if(err) {
+        console.log(err)
+        } 
+        res.forEach(function (classrooms, id) {
+            // console.log(classrooms.box_id);
+            if (classrooms.box_id !== "") {
+                console.log(classrooms.box_id);
+                getClimateData(classrooms.box_id)
+                .then((data) => {
+                    console.log(data);
+
+                });
+            }
+        });
+    });
+  }, 5000);
+}
+
+async function getClimateData(id) {
+    var response = await fetch(`https://dashboard.cphsense.com/api/v2/devices/` + id + `/latest`, {
         method: 'get',
         headers: {
         'Accept' : 'application/json',
         'Authorization' : `Bearer ` + secrets.API
         }
     });
-var result = await response.json();
+    var result = await response.json();
 
-console.log(result.data);
-  }, 5000);
+    return(result.data);
 }
 
 //todo hardcoded dummy data met apart id
