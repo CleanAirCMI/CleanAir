@@ -22,7 +22,7 @@ app.use(express.json())
     });   });
     //kan weg
     // Route to get one student
-    app.get("/getFromId/:student_id", (req,res)=>{
+    app.get("/get/:student_id", (req,res)=>{
 
     const student_id = req.params.student_id;
     db.query("SELECT * FROM students WHERE student_id = ?", student_id, 

@@ -14,7 +14,7 @@ app.use(express.json())
   //todo climate data toevoegen
     // Route to get all classrooms
     app.get("/get", (req,res)=>{
-    db.query("SELECT * FROM classrooms INNER JOIN locations ON classrooms.location_id = locations.location_id;", (err,result)=>{
+    db.query("SELECT * FROM classrooms INNER JOIN locations ON classrooms.location_id = locations.location_id", (err,result)=>{
       if(err) {
       console.log(err)
       } 
@@ -22,10 +22,10 @@ app.use(express.json())
     });   });
 
     // Route to get one room
-    app.get("/getFromId/:room_id", (req,res)=>{
+    app.get("/get/:room_id", (req,res)=>{
 
     const room_id = req.params.room_id;
-    db.query("SELECT * FROM classrooms WHERE room_id = ?", room_id, 
+    db.query("SELECT * FROM classrooms INNER JOIN locations ON classrooms.location_id = locations.location_id WHERE room_id = ?", room_id,
     (err,result)=>{
       if(err) {
       console.log(err)

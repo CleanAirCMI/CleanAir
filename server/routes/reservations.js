@@ -20,7 +20,7 @@ app.use(express.json())
 
     //kan weg
     // Route to get one reservation
-    app.get("/getFromId/:reservation_id", (req,res)=>{
+    app.get("/get/:reservation_id", (req,res)=>{
 
     const reservation_id = req.params.reservation_id;
     db.query("SELECT * FROM reserveringen WHERE reservation_id = ?", reservation_id, 
