@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import classroom1 from './img/classroom1.jpeg';
 import classroom2 from './img/classroom2.jpeg';
 import classroom3 from './img/classroom3.jpeg';
