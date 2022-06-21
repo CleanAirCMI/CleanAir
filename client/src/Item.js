@@ -50,7 +50,7 @@ function Item(props) {
             <DataItem type="Geluid" value="55 DB" percentage="30"></DataItem>     
           </div>
           <div className='w-1/2 mx-auto'>
-            <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to="/reserve/123">Reserveren</Link>
+            <Link className='block w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800' to={"/reservations/get/"+props.classroom_id}>Reserveren</Link>
           </div>
         </div>
       </div>

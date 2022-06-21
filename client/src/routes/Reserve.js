@@ -1,10 +1,10 @@
 import React from "react";
-import classroom1 from '../img/classroom1.jpeg';
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function Reserve() {
   const roomId = useParams().roomId;
+  const uri = '';
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [studentNumber, setStudentNumber] = useState("");
@@ -52,7 +52,7 @@ function Reserve() {
           <h2 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Reserveren</h2>
           <div className='rounded-xl bg-white border border-slate-300 flex flex-row my-2 text-emerald-900 items-center w-full'>
             <div>
-              <img alt="Classroom" className='object-cover rounded-l-xl w-32' src={classroom1}></img>
+              <img alt="Classroom" className='object-cover rounded-l-xl w-32' src=""></img>
             </div>
             <div className='ml-4'>
               <h3 className='text-2xl'>Lokaal 2.11</h3>

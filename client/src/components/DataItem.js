@@ -4,7 +4,6 @@ function DataItem(props) {
     const style = {
         width: props.percentage+"%",
     };
-    console.log(style);
     return (
         <div className='DataItem border border-slate-300 text-center rounded-lg overflow-hidden'>
             <div className='py-4'>
