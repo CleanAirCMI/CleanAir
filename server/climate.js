@@ -22,13 +22,19 @@ function getClassrooms() {
         console.log(err)
         } 
         res.forEach(function (classrooms, id) {
-            // console.log(classrooms.box_id);
             if (classrooms.box_id !== "") {
                 console.log(classrooms.box_id);
                 getClimateData(classrooms.box_id)
                 .then((data) => {
-                    console.log(data);
+                    // console.log(classrooms.box_id);
 
+                    // INSERT INTO Users(id, weight, desiredWeight) VALUES(1, 160, 145);
+                    db.query(`UPDATE classrooms SET co2 = (?), particles = (?), noise = (?), temperature = (?), humidity = (?) WHERE box_id='${classrooms.box_id}';`,[data.sensors[0].value, data.sensors[1].value, data.sensors[2].value, data.sensors[4].value, data.sensors[5].value], (err,result)=>{
+                        if(err) {
+                        console.log(err)
+                        } 
+                        console.log(result)
+                      });
                 });
             }
         });
