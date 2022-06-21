@@ -3,6 +3,7 @@ import express from 'express';
 import reservationRouter from './routes/reservations.js';
 import studentRouter from './routes/students.js';
 import classroomRouter from './routes/classrooms.js';
+import climate from './climate.js';
 
 const PORT = process.env.PORT || 3001;
 
