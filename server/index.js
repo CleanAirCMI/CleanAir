@@ -21,7 +21,7 @@ const response = await fetch('https://dashboard.cphsense.com/api/v2/groups/136/l
     });
 const result = await response.json();
 
-console.log(result.data[1]);
+console.log(result.data);
 
 //todo hardcoded dummy data met apart id
 
