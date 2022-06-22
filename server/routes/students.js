@@ -38,18 +38,17 @@ app.use(express.json())
 
     // Route for creating the student
     app.post('/create', (req,res)=> {
+      const student_id = req.body.student_id;
       const studentnumber = req.body.studentnumber;
       const firstname = req.body.firstname;
       const lastname = req.body.lastname;
       const email = req.body.email;
 
       // const { student_id, studentnumber, firstname, lastname, email} = req.body;
- 
-      let sql = `INSERT INTO students (studentnumber, firstname, lastname, email) VALUES ('${studentnumber}' , '${firstname}', '${lastname}', '${email}')`;
 
-      console.log(studentnumber, firstname, lastname, email);
+      console.log(student_id, studentnumber, firstname, lastname, email);
       
-      db.query(sql, (err,result)=>{
+      db.query("INSERT INTO students (student_id, studentnumber, firstname, lastname, email) VALUES (?,?,?,?,?)",[student_id, studentnumber, firstname,lastname, email], (err,result)=>{
       if(err) {
       console.log(err);
       res.send(err);
