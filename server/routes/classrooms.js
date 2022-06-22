@@ -2,11 +2,14 @@ import express from 'express';
 import fetch from 'node-fetch';
 import db from '../config/db.js';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 import secrets from '../config/secrets.json' assert {type: 'json'};
 
 const router = express.Router()
 const app = express();
 
+
+app.use(bodyParser.urlencoded());
 app.use(cors());
 app.use(express.json())
 
@@ -25,7 +28,7 @@ app.use(express.json())
     app.get("/get/:room_id", (req,res)=>{
 
     const room_id = req.params.room_id;
-    db.query("SELECT * FROM classrooms INNER JOIN locations ON classrooms.location_id = locations.location_id WHERE room_id = ?", room_id,
+    db.query("SELECT * FROM classrooms INNER JOIN locations ON classrooms.location_id = locations.location_id WHERE room_id = " + room_id,
     (err,result)=>{
       if(err) {
       console.log(err)
