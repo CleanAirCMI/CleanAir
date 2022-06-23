@@ -76,7 +76,7 @@ function DataItem(props) {
         break;
         case "Geluid":
             percentage = Math.ceil(calcPercentage(Number(props.value), 85));
-            value = props.value + " DB";
+            value = Math.ceil(props.value) + " DB";
             if(percentage > 70){
                 backgroundColor="bg-amber-500";
                 textColor="text-amber-500";
@@ -100,7 +100,7 @@ function DataItem(props) {
     return (
         <div className='DataItem border border-slate-300 text-center rounded-xl overflow-hidden'>
             <div className={textColor+' py-4'}>
-                <span className='block text-5xl'>{props.type}</span>
+                <span className='block lg:text-4xl'>{props.type}</span>
                 <span className='block text-2xl'>{value}</span>
             </div>
             <div className="w-full bg-gray-200 h-4 border-t ">

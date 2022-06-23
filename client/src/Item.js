@@ -6,12 +6,12 @@ import { FaAngleDown } from "react-icons/fa";
 
 function Item(props) {
   return (
-  <div className='Item bg-white drop-shadow-lg rounded-xl md:rounded-4xl overflow-hidden'>
+  <div className='Item bg-white drop-shadow-lg rounded-xl lg:rounded-4xl overflow-hidden'>
     <div className="accordion-item">
       <h4 className="accordion-header cursor-pointer mb-0" id={'heading'+props.index}>
         <button className="flex items-center transition cursor-pointer" type="button" data-bs-toggle="collapse" data-bs-target={'#collapse'+props.index} aria-expanded="false" aria-controls={'collapse'+props.index}>
-          <div className='grid md:grid-cols-3'>
-            <div className='w-full md:col-span-2'>
+          <div className='grid lg:grid-cols-3'>
+            <div className='w-full lg:col-span-2'>
               <img alt="Classroom" className='object-cover' src={props.img}></img>
             </div>
             <div className='p-4 md:py-4 md:pr-4 w-full'>
@@ -32,13 +32,13 @@ function Item(props) {
       </h4>
       <div id={'collapse'+props.index} className="accordion-collapse collapse w-full" aria-labelledby={'heading'+props.index}
         data-bs-parent="#accordionList">
-        <div className="accordion-body text-xl py-8 md:px-32">
-          <div className='grid grid-cols-2 md:grid-cols-5 p-8 gap-8 text-emerald-900'>
+        <div className="accordion-body text-xl py-8 lg:px-16">
+          <div className='grid grid-cols-2 lg:grid-cols-5 p-8 gap-8 text-emerald-900'>
             <DataItem type="Co2" value={props.co2}></DataItem>
             <DataItem type="Temp" value={props.temp}></DataItem>
             <DataItem type="Vocht" value={props.humidity}></DataItem>
             <DataItem type="Stof" value={props.particles}></DataItem>
-            <DataItem type="Geluid" value={55}></DataItem>     
+            <DataItem type="Geluid" value={props.sound}></DataItem>     
           </div>
           <p className='w-2/3 mx-auto text-2xl text-slate-600'>{props.description}</p>
           <div className='w-4/5 md:w-1/2 mt-8 mx-auto'>
