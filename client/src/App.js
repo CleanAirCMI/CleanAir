@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import 'tw-elements';
 import Item from './Item';
+import uri from ".";
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -11,7 +12,7 @@ function App() {
   }, []);
 
   const fetchData = () => {
-    fetch("http://localhost:3001/classrooms/get")
+    fetch(uri+"/classrooms/get")
       .then((res) => res.json())
       .then((result) => setData(result))
       .catch((err) => console.log('error'));

@@ -6,24 +6,17 @@ import { FaAngleDown } from "react-icons/fa";
 
 function Item(props) {
   return (
-  <div className='Item bg-white drop-shadow-lg rounded-xl overflow-hidden'>
-    <div className='w-full p-4 grid md:grid-cols-2'>
-      <div className='text-4xl font-medium text-emerald-900'>
-        <h3>Lokaal {props.classroom}</h3>
-      </div>
-      <div className='text-4xl font-medium text-emerald-900'>
-        <span className='block md:text-center'>{props.location}</span>
-      </div>
-    </div>
+  <div className='Item bg-white drop-shadow-lg rounded-4xl overflow-hidden'>
     <div className="accordion-item">
       <h4 className="accordion-header cursor-pointer mb-0" id={'heading'+props.index}>
         <button className="flex items-center transition cursor-pointer" type="button" data-bs-toggle="collapse" data-bs-target={'#collapse'+props.index} aria-expanded="false" aria-controls={'collapse'+props.index}>
-          <div className='grid md:grid-cols-2'>
-            <div className='w-full'>
+          <div className='grid md:grid-cols-3'>
+            <div className='w-full col-span-2'>
               <img alt="Classroom" className='object-cover h-full' src={props.img}></img>
             </div>
             <div className='p-4 md:py-4 md:pr-4'>
               <div className='h-full flex flex-col justify-between'>
+                <h3 className='text-4xl font-medium text-emerald-900'>{props.classroom}</h3>
                 <div className='w-full h-full flex flex-col justify-center'>
                   <h3 className='text-7xl font-medium text-emerald-600 leading-normal mt-0'>{props.score}</h3>
                   <span className='block text-2xl text-emerald-600'>{props.seats} plekken beschikbaar</span>

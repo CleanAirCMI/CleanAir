@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import uri from "..";
 
 function Reserve() {
   const roomId = useParams().roomId;
@@ -14,7 +15,7 @@ function Reserve() {
   const [message, setMessage] = useState("");
 
   const fetchData = () => {
-    fetch("http://localhost:3001/classrooms/get/"+roomId)
+    fetch(uri+"/classrooms/get/"+roomId)
       .then((res) => res.json())
       .then((result) => setData(result))
       .catch((err) => console.log('error'));
@@ -32,7 +33,7 @@ function Reserve() {
       datetime: e.target.date_time.value,
       seat_amount: e.target.seats.value
     }
-    fetch("http://localhost:3001/reservations/create", {
+    fetch(uri+"/reservations/create", {
       method: "POST",
       body: JSON.stringify(body),
     })
