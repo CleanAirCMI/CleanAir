@@ -98,7 +98,7 @@ function DataItem(props) {
         width: percentage+"%",
     };
     return (
-        <div className='DataItem border border-slate-300 text-center rounded-lg overflow-hidden'>
+        <div className='DataItem border border-slate-300 text-center rounded-xl overflow-hidden'>
             <div className={textColor+' py-4'}>
                 <span className='block text-5xl'>{props.type}</span>
                 <span className='block text-2xl'>{value}</span>

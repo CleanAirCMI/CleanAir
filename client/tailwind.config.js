@@ -11,6 +11,7 @@ module.exports = {
       DEFAULT: '4px',
       'md': '0.375rem',
       'lg': '0.5rem',
+      'xl': '1rem',
       'full': '9999px',
       '4xl': '6rem',
     }
