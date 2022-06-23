@@ -7,7 +7,7 @@ import { FaAngleDown } from "react-icons/fa";
 function Item(props) {
   const score = props.score;
   let scoreColor = "text-emerald-600";
-  if (props.score < 6 ){
+  if (score < 6 ){
     scoreColor = "text-red-700";
   }
   return (
