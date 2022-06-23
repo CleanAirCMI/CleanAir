@@ -12,7 +12,6 @@ function DataItem(props) {
     switch(props.type) {
         case "Co2":
             percentage = Math.ceil(calcPercentage(Number(props.value), 1200));
-            console.log(percentage);
             value = props.value + " PPM";
             if(percentage > 50){
                 backgroundColor="bg-amber-500";
