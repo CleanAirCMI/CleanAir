@@ -12,7 +12,7 @@ app.use(express.json())
 
 var timer = 0;
 
-// getClassrooms();
+getClassrooms();
 
 function getClassrooms() {
   timer = setInterval(async function() {
