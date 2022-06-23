@@ -6,6 +6,7 @@ import { FaAngleDown } from "react-icons/fa";
 
 function Item(props) {
   const score = props.score;
+  const scoreStyle = { "--value": score*10, "--size": "8rem"};
   let scoreColor = "text-emerald-600";
   if (score < 6 ){
     scoreColor = "text-red-700";
@@ -24,7 +25,7 @@ function Item(props) {
                 <h3 className='text-4xl mt-4 font-medium text-emerald-900'>{props.classroom}</h3>
                 <div className='w-full h-full flex flex-col justify-center'>
                   <span className='block font-bold text-2xl text-emerald-900'>KLIMAAT SCORE</span>
-                  <h3 className={'text-7xl font-medium leading-normal mt-0 '+scoreColor}>{props.score}/10</h3>
+                  <div className={'radial-progress mx-auto my-4 text-4xl '+ scoreColor} style={scoreStyle}>{props.score}</div>
                   <span className='block text-2xl text-emerald-600'>{props.seats} plekken beschikbaar</span>
                 </div>
                 <div className='w-full flex justify-center mb-0'>
@@ -47,7 +48,7 @@ function Item(props) {
           </div>
           <p className='w-2/3 mx-auto text-2xl text-slate-600'>{props.description}</p>
           <div className='w-4/5 md:w-1/2 mt-8 mx-auto'>
-            <Link className='block w-full rounded-lg p-4 drop-shadow-md text-2xl text-white text-center bg-black' to={"/classrooms/get/"+props.classroom_id}>RESERVEREN</Link>
+            <Link className='block w-full rounded-lg p-4 drop-shadow-xl text-2xl text-white text-center bg-black' to={"/classrooms/get/"+props.classroom_id}>RESERVEREN</Link>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ function DataItem(props) {
     let value;
     let percentage;
     let backgroundColor = "bg-emerald-600";
-    let textColor = "text-emerald-900";
+    let textColor = "text-emerald-600";
     function calcPercentage(partialValue, totalValue) {
         return (100 * partialValue) / totalValue;
     }
@@ -28,7 +28,7 @@ function DataItem(props) {
             break;
         case "Temp":
             percentage = Math.ceil(calcPercentage(Number(props.value), 34));
-            value = props.value + " °C";
+            value = props.value + "°C";
             if(percentage > 75){
                 backgroundColor="bg-amber-500";
                 textColor="text-amber-500";
@@ -44,7 +44,7 @@ function DataItem(props) {
             break;
         case "Vocht":
             percentage = Math.ceil(calcPercentage(Number(props.value), 100));
-            value = props.value + " %";
+            value = props.value + "%";
             if(percentage > 50){
                 backgroundColor="bg-amber-500";
                 textColor="text-amber-500";
@@ -95,17 +95,18 @@ function DataItem(props) {
             value = "Geen data";
     }
     const style = {
-        width: percentage+"%",
+        "--value": percentage,
+        "--size": "10rem",
+        "lg:--size": "12rem",
     };
     return (
-        <div className='DataItem border border-slate-300 text-center rounded-xl overflow-hidden'>
+        <div className='DataItem text-center rounded-xl overflow-hidden'>
             <div className={textColor+' py-4'}>
-                <span className='block lg:text-4xl'>{props.type}</span>
-                <span className='block text-2xl'>{value}</span>
-            </div>
-            <div className="w-full bg-gray-200 h-4 border-t ">
-                <div className={backgroundColor+' h-4'} style={style}></div>
-            </div>   
+                <div className='radial-progress bg-gray-100 drop-shadow-md' style={style}>
+                    <span className={textColor+' block font-medium text-2xl lg:text-3xl'}>{value}</span>
+                    <span className='block text-black lg:text-xl'>{props.type}</span>
+                </div>
+            </div>  
         </div>
     );
 }
