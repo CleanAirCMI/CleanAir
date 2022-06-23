@@ -11,23 +11,23 @@ function DataItem(props) {
 
     switch(props.type) {
         case "Co2":
-            percentage = Math.ceil(calcPercentage(Number(props.value), 1200));
+            percentage = Math.ceil(calcPercentage(Number(props.value), 1000));
             value = props.value + " PPM";
-            if(percentage > 50){
+            if(percentage > 60){
                 backgroundColor="bg-amber-500";
                 textColor="text-amber-500";
             }
-            if(percentage > 60 && percentage < 80){
+            if(percentage > 70 && percentage < 85){
                 backgroundColor="bg-orange-500";
                 textColor="text-orange-500";
             }
-            if(percentage > 80){
+            if(percentage > 85){
                 backgroundColor="bg-red-700";
                 textColor="text-red-700";
             }
             break;
         case "Temp":
-            percentage = Math.ceil(calcPercentage(Number(props.value), 35));
+            percentage = Math.ceil(calcPercentage(Number(props.value), 34));
             value = props.value + " °C";
             if(percentage > 75){
                 backgroundColor="bg-amber-500";
@@ -61,15 +61,15 @@ function DataItem(props) {
         case "Stof":
             percentage = Math.ceil(calcPercentage(Number(props.value), 55));
             value = props.value + " µg/m3";
-            if(percentage > 50){
+            if(percentage > 20){
                 backgroundColor="bg-amber-500";
                 textColor="text-amber-500";
             }
-            if(percentage > 60 && percentage < 80){
+            if(percentage > 35 && percentage < 50){
                 backgroundColor="bg-orange-500";
                 textColor="text-orange-500";
             }
-            if(percentage > 80){
+            if(percentage > 50){
                 backgroundColor="bg-red-700";
                 textColor="text-red-700";
             }
