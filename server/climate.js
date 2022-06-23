@@ -12,10 +12,11 @@ app.use(express.json())
 
 var timer = 0;
 var co2Score
-var climateScore
+var particleScore
 var temperatureScore
 var humidityScore
 var noiseScore
+var climateScore
 
 getClassrooms();
 
@@ -28,7 +29,6 @@ function getClassrooms() {
         } 
         res.forEach(function (classrooms, id) {
             if (classrooms.box_id !== "") {
-                // console.log(classrooms.box_id);
                 getClimateData(classrooms.box_id)
                 .then((data) => {
                     if (data) {
@@ -46,7 +46,16 @@ function getClassrooms() {
                         console.log(`co2score is ` + co2Score + ` de co2 is ` + co2);
 
                         //particles data verwerken
-                        
+                        var particle = data.sensors[1].value;
+
+                        if (particle < 0){
+                            particleScore = 100;
+                        } else if (particle > 150 ) {
+                            particleScore = 0;
+                        } else {
+                            particleScore = (-(2/3) * particle + 100);
+                        }
+                        console.log(`particleScore is ` + particleScore + ` de particle is ` + particle);
 
                         //temperature data verwerken
                         var temperature = data.sensors[4].value;
@@ -88,11 +97,10 @@ function getClassrooms() {
                         }
                         console.log(`noiseScore is ` + noiseScore + ` de noise is ` + noise);
 
-                        climateScore = ((co2Score + temperatureScore + humidityScore + noiseScore) / 4 ) / 10;
-                        // climateScore = (co2Score / 10);
+                        climateScore = ((co2Score + particleScore + temperatureScore + humidityScore + noiseScore) / 5 ) / 10;
 
                         //sql update
-                        db.query(`UPDATE classrooms SET climate_score = (?), co2 = (?), particles = (?), noise = (?), temperature = (?), humidity = (?) WHERE box_id='${classrooms.box_id}';`,[climateScore, co2, data.sensors[1].value, noise, temperature, humidity], (err,result)=>{
+                        db.query(`UPDATE classrooms SET climate_score = (?), co2 = (?), particles = (?), noise = (?), temperature = (?), humidity = (?) WHERE box_id='${classrooms.box_id}';`,[climateScore, co2, particle, noise, temperature, humidity], (err,result)=>{
                             if(err) {
                             console.log(err)
                             } 
@@ -106,8 +114,6 @@ function getClassrooms() {
   }, 5000);
 }
 
-
-
 async function getClimateData(id) {
     var response = await fetch(`https://dashboard.cphsense.com/api/v2/devices/` + id + `/latest`, {
         method: 'get',
@@ -120,7 +126,5 @@ async function getClimateData(id) {
 
     return(result.data);
 }
-
-//todo schaal 1-10
 
 export default app;
