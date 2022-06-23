@@ -6,7 +6,11 @@ import bodyParser from 'body-parser'
 const router = express.Router()
 const app = express();
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+app.use(bodyParser.text({type: '*/*'}));
+app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json())
 
@@ -36,28 +40,29 @@ app.use(express.json())
     // Route for creating the reservation
     app.post('/create', (req,res)=> {
     
-    const student_id = req.body.student_id;
-    const room_id = req.body.room_id;
-    const datetime = req.body.datetime;
-    const seat_amount = req.body.seat_amount;
+        const body = JSON.parse(req.body);
+        const student_id = body.student_id;
+        const room_id = body.room_id;
+        const datetime = body.datetime;
+        const seat_amount = body.seat_amount;
 
-    console.log(datetime);
 
-    db.query("INSERT INTO reservations (student_id, room_id, datetime, seat_amount) VALUES (?,?,?,?)",[student_id, room_id, datetime,seat_amount], (err,result)=>{
-      if(err) {
-      console.log(err)
-      res.send(err);
-      } 
-      console.log(result)
-      res.send(result);
-    });   })
+        db.query("INSERT INTO reservations (student_id, room_id, datetime, seat_amount) VALUES (?,?,?,?)",[student_id, room_id, datetime,seat_amount], (err,result)=>{
+        if(err) {
+        console.log(err)
+        res.send(err);
+        } 
+        console.log(result)
+        res.send(result);
+        });   
+    })
 
     // Route to delete a reservation
     // kan weg
-    app.delete('/delete/:reservation_id',(req,res)=>{
+    app.delete('/delete/:id',(req,res)=>{
     const reservation_id = req.params.reservation_id;
 
-    db.query("DELETE FROM reservation WHERE reservation_id=" + reservation_id, (err,result)=>{
+    db.query("DELETE FROM reservations WHERE id=" + reservation_id, (err,result)=>{
     if(err) {
     console.log(err)
             } }) })

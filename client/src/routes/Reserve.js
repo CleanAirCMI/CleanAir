@@ -47,12 +47,12 @@ function Reserve() {
   
   return (
     <div className="Reserve">
-      <header className="App-header bg-white flex flex-row items-center px-8 justify-between drop-shadow-md">
-        <Link to="/"><h1 className='text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Werkplekkie</h1></Link>
-        <span className="text-emerald-900 text-xl">Ingelogd als Ali (0949886)</span>
+      <header className="App-header bg-white flex flex-row items-center px-4 md:px-8 justify-between drop-shadow-md">
+        <Link to="/"><h1 className='text-4xl md:text-5xl text-emerald-900 font-normal leading-normal mt-0 mb-2 text-center'>Werkplekkie</h1></Link>
+        <span className="text-emerald-900 text-lg">Ingelogd als Ali (0949886)</span>
       </header>
       <section className='w-full h-full py-8 bg-stone-300'>
-        <div className='rounded-xl w-1/2 mx-auto p-8 drop-shadow-lg bg-white'>
+        <div className='rounded-xl mx-4 md:w-1/2 md:mx-auto p-8 drop-shadow-lg bg-white'>
           <h2 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Reserveren</h2>
           {data && data.map((element)=> (
             <div className='rounded-xl bg-white border border-slate-300 flex flex-row my-2 text-emerald-900 items-center w-full'>
