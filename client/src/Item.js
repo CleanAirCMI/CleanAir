@@ -5,6 +5,11 @@ import DataItem from './components/DataItem';
 import { FaAngleDown } from "react-icons/fa";
 
 function Item(props) {
+  const score = props.score;
+  let scoreColor = "text-emerald-600";
+  if (props.score < 6 ){
+    scoreColor = "text-red-700";
+  }
   return (
   <div className='Item bg-white drop-shadow-lg rounded-xl lg:rounded-4xl overflow-hidden'>
     <div className="accordion-item">
@@ -19,7 +24,7 @@ function Item(props) {
                 <h3 className='text-4xl mt-4 font-medium text-emerald-900'>{props.classroom}</h3>
                 <div className='w-full h-full flex flex-col justify-center'>
                   <span className='block font-bold text-2xl text-emerald-900'>KLIMAAT SCORE</span>
-                  <h3 className='text-7xl font-medium text-emerald-600 leading-normal mt-0'>{props.score}/10</h3>
+                  <h3 className={'text-7xl font-medium leading-normal mt-0 '+scoreColor}>{props.score}/10</h3>
                   <span className='block text-2xl text-emerald-600'>{props.seats} plekken beschikbaar</span>
                 </div>
                 <div className='w-full flex justify-center mb-0'>
