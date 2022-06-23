@@ -80,7 +80,7 @@ function Reserve() {
               <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="number" name="seats" min="1" max="8" value={seats} onChange={(e) => setSeats(e.target.value)}></input>
               <label htmlFor="lname">Datum</label>
               <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="datetime-local" name="date_time" value={date} onChange={(e) => setDate(e.target.value)}></input>
-              <input className='my-2 w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800 cursor-pointer' type="submit" value="Reserveren"></input>
+              <input className='my-2 w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-black cursor-pointer' type="submit" value="RESERVEREN"></input>
               <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>
           </div>

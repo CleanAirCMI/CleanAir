@@ -96,15 +96,15 @@ function DataItem(props) {
     }
     const style = {
         "--value": percentage,
-        "--size": "10rem",
-        "lg:--size": "12rem",
+        "--size": "8rem",
+        
     };
     return (
         <div className='DataItem text-center rounded-xl overflow-hidden'>
             <div className={textColor+' py-4'}>
                 <div className='radial-progress bg-gray-100 drop-shadow-md' style={style}>
-                    <span className={textColor+' block font-medium text-2xl lg:text-3xl'}>{value}</span>
-                    <span className='block text-black lg:text-xl'>{props.type}</span>
+                    <span className={textColor+' block font-medium text-xl lg:text-1xl'}>{value}</span>
+                    <span className='block text-black text-md lg:text-xl'>{props.type}</span>
                 </div>
             </div>  
         </div>
