@@ -26,26 +26,19 @@ function Reserve() {
 
   let handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      let res = await fetch("http://localhost:3001/reservations/create", {
-        method: "POST",
-        body: JSON.stringify({
-          student_id: studentNumber,
-          room_id: roomId,
-          datetime: date,
-          seat_amount: seats
-        }),
-      });
-      let resJson = await res.json();
-      if (res.status === 200) {
-
-        setMessage("Reservering geplaatst");
-      } else {
-        setMessage("Iets ging fout. Probeer het opnieuw");
-      }
-    } catch (err) {
-      console.log(err);
+    const body = {
+      student_id: e.target.student_number.value,
+      room_id: e.target.room_id.value,
+      datetime: e.target.date_time.value,
+      seat_amount: e.target.seats.value
     }
+    fetch("http://localhost:3001/reservations/create", {
+      method: "POST",
+      body: JSON.stringify(body),
+    })
+    .then((res) => res.json())
+    .then(setMessage("Reservering geplaatst"))
+    .catch(error => {console.log(error)})
   };
 
   useEffect(() => {
@@ -75,16 +68,17 @@ function Reserve() {
           <div className=''>
             <h3 className='text-2xl text-emerald-900 font-medium'>Gegevens</h3>
             <form onSubmit={handleSubmit} className='my-2 text-emerald-900'>
+              <input type="hidden" name="room_id" value={roomId}></input>
               <label htmlFor="fname">Voornaam</label>
-              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" name="first_name" value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
               <label htmlFor="lname">Achternaam</label>
-              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" name="last_name" value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
               <label htmlFor="fname">Studentennummer</label>
-              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" value={studentNumber} onChange={(e) => setStudentNumber(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="text" name="student_number" value={studentNumber} onChange={(e) => setStudentNumber(e.target.value)}></input>
               <label htmlFor="lname">Aantal plekken</label>
-              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="number" min="1" max="8" value={seats} onChange={(e) => setSeats(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="number" name="seats" min="1" max="8" value={seats} onChange={(e) => setSeats(e.target.value)}></input>
               <label htmlFor="lname">Datum</label>
-              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="datetime-local" value={date} onChange={(e) => setDate(e.target.value)}></input>
+              <input className='w-full border border-slate-300 rounded-md p-2 mb-2' type="datetime-local" name="date_time" value={date} onChange={(e) => setDate(e.target.value)}></input>
               <input className='my-2 w-full rounded-md p-4 drop-shadow-md text-xl text-white text-center bg-green-800 cursor-pointer' type="submit" value="Reserveren"></input>
               <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>
