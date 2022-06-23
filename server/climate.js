@@ -11,6 +11,11 @@ app.use(cors());
 app.use(express.json())
 
 var timer = 0;
+var co2Score
+var climateScore
+var temperatureScore
+var humidityScore
+var noiseScore
 
 getClassrooms();
 
@@ -23,11 +28,71 @@ function getClassrooms() {
         } 
         res.forEach(function (classrooms, id) {
             if (classrooms.box_id !== "") {
-                console.log(classrooms.box_id);
+                // console.log(classrooms.box_id);
                 getClimateData(classrooms.box_id)
                 .then((data) => {
                     if (data) {
-                        db.query(`UPDATE classrooms SET co2 = (?), particles = (?), noise = (?), temperature = (?), humidity = (?) WHERE box_id='${classrooms.box_id}';`,[data.sensors[0].value, data.sensors[1].value, data.sensors[2].value, data.sensors[4].value, data.sensors[5].value], (err,result)=>{
+
+                        //co2 data verwerken
+                        var co2 = data.sensors[0].value;
+
+                        if (co2 < 600 ) {
+                            co2Score = 100;
+                        } else if (co2 > 1000) {
+                            co2Score = 0;
+                        } else {
+                            co2Score = (-0.25 * co2 + 250);
+                        } 
+                        console.log(`co2score is ` + co2Score + ` de co2 is ` + co2);
+
+                        //particles data verwerken
+                        
+
+                        //temperature data verwerken
+                        var temperature = data.sensors[4].value;
+
+                        if (temperature < 0 || temperature > 34 ){
+                            temperatureScore = 0;
+                        } else if (temperature < 20 ) {
+                            temperatureScore = (10 * temperature -100);
+                        } else if (temperature > 24) {
+                            temperatureScore = ((-10) * temperature + 340);
+                        } else {
+                            temperatureScore = 100; 
+                        }
+                        console.log(`temperatureScore is ` + temperatureScore + ` de temperatuur is ` + temperature);
+
+                        //humidity data verwerken
+                        var humidity = data.sensors[5].value;
+
+                        if (humidity < 0 || humidity > 90 ){
+                            humidityScore = 0;
+                        } else if (humidity < 25 ) {
+                            humidityScore = (2.6 * humidity);
+                        } else if (humidity > 65 ) {
+                            humidityScore = (-4 * humidity + 360);
+                        } else {
+                            humidityScore = 100; 
+                        }
+                        console.log(`humidityScore is ` + humidityScore + ` de luchtvochtigheid is ` + humidity);
+
+                        //noise data verwerken
+                        var noise = data.sensors[2].value;
+
+                        if (noise < 25){
+                            noiseScore = 100;
+                        } else if (noise > 85 ) {
+                            noiseScore = 0;
+                        } else {
+                            noiseScore = (-(5/3) * noise + (425/3));
+                        }
+                        console.log(`noiseScore is ` + noiseScore + ` de noise is ` + noise);
+
+                        climateScore = ((co2Score + temperatureScore + humidityScore + noiseScore) / 4 ) / 10;
+                        // climateScore = (co2Score / 10);
+
+                        //sql update
+                        db.query(`UPDATE classrooms SET climate_score = (?), co2 = (?), particles = (?), noise = (?), temperature = (?), humidity = (?) WHERE box_id='${classrooms.box_id}';`,[climateScore, co2, data.sensors[1].value, noise, temperature, humidity], (err,result)=>{
                             if(err) {
                             console.log(err)
                             } 
@@ -40,6 +105,8 @@ function getClassrooms() {
     });
   }, 5000);
 }
+
+
 
 async function getClimateData(id) {
     var response = await fetch(`https://dashboard.cphsense.com/api/v2/devices/` + id + `/latest`, {
