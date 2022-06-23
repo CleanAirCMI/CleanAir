@@ -35,8 +35,7 @@ app.use(express.json())
 
     // Route for creating the reservation
     app.post('/create', (req,res)=> {
-
-    const reservation_id = req.body.reservation_id;    
+    
     const student_id = req.body.student_id;
     const room_id = req.body.room_id;
     const datetime = req.body.datetime;
@@ -44,7 +43,7 @@ app.use(express.json())
 
     console.log(datetime);
 
-    db.query("INSERT INTO reservations (reservation_id, student_id, room_id, datetime, seat_amount) VALUES (?,?,?,?,?)",[reservation_id, student_id, room_id, datetime,seat_amount], (err,result)=>{
+    db.query("INSERT INTO reservations (student_id, room_id, datetime, seat_amount) VALUES (?,?,?,?)",[student_id, room_id, datetime,seat_amount], (err,result)=>{
       if(err) {
       console.log(err)
       res.send(err);

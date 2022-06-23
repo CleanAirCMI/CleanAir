@@ -14,13 +14,11 @@ function Reserve() {
   const [message, setMessage] = useState("");
 
   const fetchData = () => {
-    fetch("http://localhost:3001/reservations/get/"+roomId)
+    fetch("http://localhost:3001/classrooms/get/"+roomId)
       .then((res) => res.json())
       .then((result) => setData(result))
       .catch((err) => console.log('error'));
   }
-
-  console.log(data);
 
   useEffect(() => {
     fetchData();
@@ -29,15 +27,13 @@ function Reserve() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("https://example.org/post", {
+      let res = await fetch("http://localhost:3001/reservations/create", {
         method: "POST",
         body: JSON.stringify({
-          firstname: firstName,
-          lastname: lastName,
-          studentNumber: studentNumber,
-          seats: seats,
-          date: date,
-          roomId: roomId
+          student_id: studentNumber,
+          room_id: roomId,
+          datetime: date,
+          seat_amount: seats
         }),
       });
       let resJson = await res.json();
@@ -65,14 +61,14 @@ function Reserve() {
       <section className='w-full h-full py-8 bg-stone-300'>
         <div className='rounded-xl w-1/2 mx-auto p-8 drop-shadow-lg bg-white'>
           <h2 className='text-4xl font-medium text-emerald-900 leading-normal mt-0'>Reserveren</h2>
-          {data && data.map((element, index)=> (
+          {data && data.map((element)=> (
             <div className='rounded-xl bg-white border border-slate-300 flex flex-row my-2 text-emerald-900 items-center w-full'>
               <div>
-                <img alt="Classroom" className='object-cover rounded-l-xl w-32' src=""></img>
+                <img alt="Classroom" className='object-cover rounded-l-xl w-32' src={process.env.PUBLIC_URL+'/img/'+element.image}></img>
               </div>
               <div className='ml-4'>
-                <h3 className='text-2xl'>Lokaal 2.11</h3>
-                <span>Wijnhaven, 2e verdieping</span>
+                <h3 className='text-2xl'>Lokaal {element.name}</h3>
+                <span>{element.location_name}, { element.floor === 0 ? "begane grond" : element.floor+"e verdieping"}</span>
               </div>
             </div>
           ))}

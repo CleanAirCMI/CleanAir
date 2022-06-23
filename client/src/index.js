@@ -16,7 +16,7 @@ root.render(
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/reservations/get/:roomId" element={<Reserve />} />
+      <Route path="/classrooms/get/:roomId" element={<Reserve />} />
     </Routes>
   </BrowserRouter>
   </React.StrictMode>
