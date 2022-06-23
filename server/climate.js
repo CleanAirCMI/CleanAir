@@ -50,10 +50,10 @@ function getClassrooms() {
 
                         if (particle < 0){
                             particleScore = 100;
-                        } else if (particle > 150 ) {
+                        } else if (particle > 50 ) {
                             particleScore = 0;
                         } else {
-                            particleScore = (-(2/3) * particle + 100);
+                            particleScore = (-2 * particle + 100);
                         }
                         console.log(`particleScore is ` + particleScore + ` de particle is ` + particle);
 
