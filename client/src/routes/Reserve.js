@@ -23,6 +23,7 @@ function Reserve() {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, []); 
 
   let handleSubmit = async (e) => {

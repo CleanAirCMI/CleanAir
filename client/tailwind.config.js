@@ -13,7 +13,7 @@ module.exports = {
       'lg': '0.5rem',
       'xl': '1rem',
       'full': '9999px',
-      '4xl': '6rem',
+      '4xl': '4rem',
     }
   },
   plugins: [

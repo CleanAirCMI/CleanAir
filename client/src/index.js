@@ -10,7 +10,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Reserve from './routes/Reserve';
 
-const uri = "https://api.hoste.me";
+const uri = "http://localhost:3001";
 export default uri;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
